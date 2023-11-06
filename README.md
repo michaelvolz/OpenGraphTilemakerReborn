@@ -1,5 +1,3 @@
-<base target="_blank">
-
 # OpenGraphTilemakerReborn
 
 [![Build Status](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/dotnet.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/dotnet.yml)
