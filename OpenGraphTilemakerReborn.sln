@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34227.203
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGraphTilemakerReborn", "OpenGraphTilemakerReborn\OpenGraphTilemakerReborn.csproj", "{2C454984-A209-4FAA-A5D4-E51C185B5FFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGraphTilemakerReborn", "src\OpenGraphTilemakerReborn\OpenGraphTilemakerReborn.csproj", "{2C454984-A209-4FAA-A5D4-E51C185B5FFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
