@@ -3,7 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34227.203
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGraphTilemakerReborn", "src\OpenGraphTilemakerReborn\OpenGraphTilemakerReborn.csproj", "{2C454984-A209-4FAA-A5D4-E51C185B5FFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenGraphTilemakerReborn", "src\OpenGraphTilemakerReborn\OpenGraphTilemakerReborn.csproj", "{2C454984-A209-4FAA-A5D4-E51C185B5FFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutionwide", "Solutionwide", "{71D91AF6-166B-495B-A008-00B312E31FC2}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		Build.ps1 = Build.ps1
+		.github\dependabot.yml = .github\dependabot.yml
+		.devcontainer\devcontainer.json = .devcontainer\devcontainer.json
+		Directory.Build.props = Directory.Build.props
+		global.json = global.json
+		License.txt = License.txt
+		README.md = README.md
+		StyleCop.Dictionary.xml = StyleCop.Dictionary.xml
+		StyleCop.json = StyleCop.json
+		StyleCop.ruleset = StyleCop.ruleset
+		Test.ps1 = Test.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
