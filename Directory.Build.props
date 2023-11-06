@@ -1,0 +1,37 @@
+<!-- https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties?view=vs-2017
+-->
+<!--EXTERNAL_PROPERTIES: MSBuildThisFileDirectory-->
+<Project>
+  <PropertyGroup>
+    <Version Condition="$(Version) == ''">0.1.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>$(Version)</Version>
+    <Authors>Michael A. Volz</Authors>
+    <FileVersion>$(Version)</FileVersion>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <Product>OpenGraphTileMakerReborn</Product>
+    <NeutralLanguage>en</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>1701;1702;CA1014;AD0001</NoWarn>
+    <DocumentationFile>_$(MSBuildProjectName).xml</DocumentationFile>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)StyleCop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)StyleCop.json" Link="StyleCop.json" />
+  </ItemGroup>
+</Project>
