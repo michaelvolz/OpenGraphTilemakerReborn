@@ -6,8 +6,8 @@ namespace OpenGraphTilemakerReborn.Components.Pages
 {
     public partial class Counter : IDisposable
     {
-        [Inject] public IState<CounterState>? CounterState { get; set; }
-        [Inject] public IDispatcher? Dispatcher { get; set; }
+        [Inject] public IState<CounterState> CounterState { get; set; } = default!;
+        [Inject] public IDispatcher Dispatcher { get; set; } = default!;
         [Inject] private IStore Store { get; set; } = default!;
 
         void IDisposable.Dispose() => CounterState.StateChanged -= CounterState_StateChanged;

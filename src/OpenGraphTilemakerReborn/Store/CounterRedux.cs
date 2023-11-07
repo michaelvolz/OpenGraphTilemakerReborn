@@ -17,7 +17,7 @@ namespace OpenGraphTilemakerReborn.Store
     public static class CounterReducer
     {
         [ReducerMethod]
-        public static CounterState ReduceIncrementCounterAction(CounterState state, IncrementCounterAction counterAction)
+        public static CounterState OnIncrementCounterAction(CounterState state, IncrementCounterAction counterAction)
         {
             Console.WriteLine($"Old state {state.ClickCount}");
 
