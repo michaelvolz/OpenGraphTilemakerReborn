@@ -1,3 +1,4 @@
+using Fluxor;
 using MediatR;
 using MediatR.Examples;
 using MediatR.Pipeline;
@@ -53,6 +54,14 @@ internal class Program
             serviceCollection.AddScoped(typeof(IRequestPreProcessor<>), typeof(GenericRequestPreProcessor<>));
             serviceCollection.AddScoped(typeof(IRequestPostProcessor<,>), typeof(GenericRequestPostProcessor<,>));
             serviceCollection.AddScoped(typeof(IStreamPipelineBehavior<,>), typeof(GenericStreamPipelineBehavior<,>));
+
+            serviceCollection.AddFluxor(config => {
+                config
+                    .ScanAssemblies(typeof(Program).Assembly)
+                    .UseRouting()
+                    //.UseReduxDevTools()
+                    ;
+            });
 
             return serviceCollection;
         }

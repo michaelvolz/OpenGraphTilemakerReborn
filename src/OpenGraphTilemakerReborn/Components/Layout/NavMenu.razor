@@ -1,10 +1,40 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject IState<CounterState> CounterState
+@inject IStore Store
+@implements IDisposable
+
+@code {
+
+    void IDisposable.Dispose()
+    {
+        CounterState.StateChanged -= CounterState_StateChanged;
+    }
+
+    private void CounterState_StateChanged(object? sender, EventArgs e)
+    {
+		Console.WriteLine("### NavMenu.CounterState_StateChanged");
+        InvokeAsync(StateHasChanged);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Console.WriteLine("### NavMenu.OnAfterRenderAsync");
+            await Store.InitializeAsync();
+
+            CounterState.StateChanged += CounterState_StateChanged;
+        }
+    }
+
+}
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">OGT Reborn</a>
     </div>
 </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+<input type="checkbox" title="Navigation menu" class="navbar-toggler"/>
 
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
@@ -16,7 +46,7 @@
 
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill" aria-hidden="true"></span> Counter
+				<span class="bi bi-plus-square-fill" aria-hidden="true"></span> Counter (@CounterState.Value.ClickCount)
             </NavLink>
         </div>
 
