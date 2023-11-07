@@ -9,12 +9,34 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.8.0" />
+    <PackageReference Include="Fluxor.Blazor.Web" Version="5.9.1" />
+    <PackageReference Include="Fluxor.Blazor.Web.ReduxDevTools" Version="5.9.1" />
     <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Domain\" />
+    <PackageReference Include="Roslynator.Analyzers" Version="4.6.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.6.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Roslynator.CommandLine" Version="0.7.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Roslynator.CSharp" Version="4.6.1" />
+    <PackageReference Include="Roslynator.CSharp.Workspaces" Version="4.6.1" />
+    <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.6.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Roslynator.Testing.Common" Version="4.6.1" />
+    <PackageReference Include="Roslynator.Testing.CSharp" Version="4.6.1" />
+    <PackageReference Include="Roslynator.Testing.CSharp.Xunit" Version="4.6.1" />
+    <PackageReference Include="Roslynator.Workspaces.Core" Version="4.6.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
 
 </Project>
