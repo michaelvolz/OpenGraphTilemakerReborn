@@ -37,10 +37,15 @@ namespace OpenGraphTilemakerReborn.Components.Pages
             if (firstRender) Console.WriteLine("### OnAfterRender");
         }
 
-        protected void SendMessageToConsoleNow()
+        private void SendMessageToConsoleNow()
         {
             Console.WriteLine("SendMessageToConsoleNow");
             Dispatcher.Dispatch(new SendMessageRedux.SendMessage($"Hello from Fluxor {CounterState.Value.ClickCount}"));
+        }
+
+        private void ThrowException()
+        {
+	        throw new NotImplementedException();
         }
     }
 }

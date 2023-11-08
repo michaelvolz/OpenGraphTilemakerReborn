@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Watch Include="**\*.js" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*" />
+    <Watch Include="**\*.css" />
     <Watch Include="appsettings*.json" />
   </ItemGroup>
 
