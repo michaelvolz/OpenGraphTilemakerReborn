@@ -5,9 +5,14 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<base href="/" />
-	<link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+	<environment include="Development">
+		<link rel="stylesheet" href="bootstrap.custom.css" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="bootstrap.custom.min.css" />
+	</environment>
 	<link rel="stylesheet" href="app.css" />
-	<link rel="stylesheet" href="OpenGraphTilemakerReborn.styles.css" />
+	@* <link rel="stylesheet" href="OpenGraphTilemakerReborn.styles.css" /> *@
 	<link rel="icon" type="image/png" href="favicon.png" />
 	<HeadOutlet @rendermode="@RenderMode.InteractiveServer" />
 </head>
