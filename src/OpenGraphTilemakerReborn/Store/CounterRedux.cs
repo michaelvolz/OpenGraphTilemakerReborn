@@ -1,23 +1,28 @@
 ﻿using Fluxor;
+using JetBrains.Annotations;
 
 namespace OpenGraphTilemakerReborn.Store
 {
-    [FeatureState]
-    public record CounterState
+    public class CounterRedux
     {
-        public int ClickCount { get; init; }
-    }
-
-    public record IncrementCounterAction(int Amount = 1) { }
-
-    public static class CounterReducer
-    {
-        [ReducerMethod]
-        public static CounterState OnIncrementCounterAction(CounterState state, IncrementCounterAction action)
+        [FeatureState]
+        public record State
         {
-            Console.WriteLine($"Old state {state.ClickCount}");
+            public int ClickCount { get; init; }
+        }
 
-            return state with { ClickCount = state.ClickCount + action.Amount };
+        public record IncrementCounter(int Amount = 1);
+
+        [UsedImplicitly]
+        public static class Reducers
+        {
+            [ReducerMethod, UsedImplicitly]
+            public static State OnIncrementCounter(State state, IncrementCounter action)
+            {
+                Console.WriteLine($"Old state {state.ClickCount}");
+
+                return new() { ClickCount = state.ClickCount + action.Amount };
+            }
         }
     }
 }

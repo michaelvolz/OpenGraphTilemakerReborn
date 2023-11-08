@@ -6,7 +6,7 @@ namespace OpenGraphTilemakerReborn.Components.Pages
 {
     public partial class Counter : IDisposable
     {
-        [Inject] public IState<CounterState> CounterState { get; set; } = default!;
+        [Inject] public IState<CounterRedux.State> CounterState { get; set; } = default!;
         [Inject] public IDispatcher Dispatcher { get; set; } = default!;
         [Inject] private IStore Store { get; set; } = default!;
 
@@ -16,7 +16,7 @@ namespace OpenGraphTilemakerReborn.Components.Pages
         {
             Console.WriteLine("IncrementCount");
 
-            Dispatcher.Dispatch(new IncrementCounterAction());
+            Dispatcher.Dispatch(new CounterRedux.IncrementCounter());
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -40,7 +40,7 @@ namespace OpenGraphTilemakerReborn.Components.Pages
         protected void SendMessageToConsoleNow()
         {
             Console.WriteLine("SendMessageToConsoleNow");
-            Dispatcher.Dispatch(new SendMessageAction($"Hello from Fluxor {CounterState.Value.ClickCount}"));
+            Dispatcher.Dispatch(new SendMessageRedux.SendMessage($"Hello from Fluxor {CounterState.Value.ClickCount}"));
         }
     }
 }

@@ -1,30 +1,36 @@
 ﻿using Fluxor;
+using JetBrains.Annotations;
 
 namespace OpenGraphTilemakerReborn.Store
 {
-    [FeatureState]
-    public record SendMessageState
+    public class SendMessageRedux
     {
-        public string LastMessage { get; set; } = "None yet";
-    }
-
-    public record SendMessageAction(string Message) { }
-
-    public static class SendMessageStateReducers
-    {
-        [ReducerMethod]
-        public static SendMessageState OnSendMessageAction(SendMessageState state, SendMessageAction action)
-            => state with { LastMessage = action.Message };
-    }
-
-    public static class SendMessageStateEffects
-    {
-        [EffectMethod]
-        public static Task OnSendMessageAction(SendMessageAction action, IDispatcher dispatcher)
+        [FeatureState]
+        public record State
         {
-            Console.WriteLine(action.Message);
+            public string LastMessage { get; set; } = "None yet";
+        }
 
-            return Task.CompletedTask;
+        public record SendMessage(string Message);
+
+        [UsedImplicitly]
+        public static class Reducers
+        {
+            [ReducerMethod, UsedImplicitly]
+            public static State OnSendMessage(State state, SendMessage sendMessage)
+                => new() { LastMessage = sendMessage.Message };
+        }
+
+        [UsedImplicitly]
+        public static class Effects
+        {
+            [EffectMethod, UsedImplicitly]
+            public static Task OnSendMessage(SendMessage sendMessage, IDispatcher dispatcher)
+            {
+                Console.WriteLine(sendMessage.Message);
+
+                return Task.CompletedTask;
+            }
         }
     }
 }
