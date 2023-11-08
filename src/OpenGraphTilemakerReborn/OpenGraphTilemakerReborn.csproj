@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Watch Include="**\*.js" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.8.0" />
     <PackageReference Include="Fluxor.Blazor.Web" Version="5.9.1" />
     <PackageReference Include="Fluxor.Blazor.Web.ReduxDevTools" Version="5.9.1" />
