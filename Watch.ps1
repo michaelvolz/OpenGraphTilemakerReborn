@@ -1,1 +1,1 @@
-dotnet watch run --non-interactive --launch-profile "https" -- -c Debug --project src/OpenGraphTilemakerReborn
+dotnet watch --non-interactive --launch-profile "Watch" --project src/OpenGraphTilemakerReborn
