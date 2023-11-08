@@ -3,25 +3,21 @@
 namespace OpenGraphTilemakerReborn.Store
 {
     [FeatureState]
-    public class CounterState
+    public record CounterState
     {
-        private CounterState() { }
-
-        public CounterState(int clickCount) => ClickCount = clickCount;
-
-        public int ClickCount { get; }
+        public int ClickCount { get; init; }
     }
 
-    public class IncrementCounterAction { }
+    public record IncrementCounterAction(int Amount = 1) { }
 
     public static class CounterReducer
     {
         [ReducerMethod]
-        public static CounterState OnIncrementCounterAction(CounterState state, IncrementCounterAction counterAction)
+        public static CounterState OnIncrementCounterAction(CounterState state, IncrementCounterAction action)
         {
             Console.WriteLine($"Old state {state.ClickCount}");
 
-            return new CounterState(state.ClickCount + 1);
+            return state with { ClickCount = state.ClickCount + action.Amount };
         }
     }
 }
