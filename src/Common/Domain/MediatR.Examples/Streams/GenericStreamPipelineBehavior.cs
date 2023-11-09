@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 // ReSharper disable once CheckNamespace
 namespace MediatR.Examples;
 
-public class GenericStreamPipelineBehavior<TRequest, TResponse> : IStreamPipelineBehavior<TRequest, TResponse>
+public class GenericStreamPipelineBehavior<TRequest, TResponse> : IStreamPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {
 	private readonly TextWriter _writer;
 

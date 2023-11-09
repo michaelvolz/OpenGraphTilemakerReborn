@@ -4,5 +4,5 @@ namespace MediatR.Examples;
 
 public class Song
 {
-	public string Message { get; set; }
+	public required string Message { get; set; }
 }

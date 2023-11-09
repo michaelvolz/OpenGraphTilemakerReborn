@@ -2,7 +2,7 @@
 
 namespace MediatR.Examples;
 
-public class GenericPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+public class GenericPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {
 	private readonly TextWriter _writer;
 

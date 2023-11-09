@@ -3,7 +3,7 @@ using MediatR.Pipeline;
 // ReSharper disable once CheckNamespace
 namespace MediatR.Examples;
 
-public class GenericRequestPostProcessor<TRequest, TResponse> : IRequestPostProcessor<TRequest, TResponse>
+public class GenericRequestPostProcessor<TRequest, TResponse> : IRequestPostProcessor<TRequest, TResponse> where TRequest : notnull
 {
 	private readonly TextWriter _writer;
 
