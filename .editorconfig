@@ -194,7 +194,7 @@ resharper_suggest_var_or_type_simple_types_highlighting = hint
 csharp_new_line_before_members_in_object_initializers = false
 csharp_preferred_modifier_order = public, private, protected, internal, new, abstract, virtual, sealed, override, static, readonly, extern, unsafe, volatile, async, file, required:suggestion
 csharp_space_after_cast = false
-csharp_style_expression_bodied_methods = false:suggestion
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
 csharp_style_var_elsewhere = true:suggestion
 csharp_style_var_for_built_in_types = true:suggestion
 csharp_style_var_when_type_is_apparent = true:suggestion
@@ -221,14 +221,14 @@ dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggest
 csharp_indent_labels = flush_left
 csharp_using_directive_placement = outside_namespace:silent
 csharp_prefer_simple_using_statement = true:suggestion
-csharp_style_namespace_declarations = block_scoped:none
+csharp_style_namespace_declarations = file_scoped:none
 csharp_style_prefer_method_group_conversion = true:silent
 csharp_style_prefer_top_level_statements = true:silent
 csharp_style_prefer_primary_constructors = true:suggestion
 csharp_style_expression_bodied_operators = false:suggestion
 csharp_style_expression_bodied_indexers = when_on_single_line:suggestion
 csharp_style_expression_bodied_lambdas = when_on_single_line:suggestion
-csharp_style_expression_bodied_local_functions = false:suggestion
+csharp_style_expression_bodied_local_functions = when_on_single_line:suggestion
 csharp_style_throw_expression = true:suggestion
 csharp_style_prefer_null_check_over_type_check = true:suggestion
 csharp_style_prefer_local_over_anonymous_function = true:suggestion
@@ -254,6 +254,7 @@ csharp_style_prefer_pattern_matching = true:silent
 csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
 csharp_style_prefer_not_pattern = true:suggestion
 csharp_style_prefer_extended_property_pattern = true:suggestion
+csharp_style_expression_bodied_accessors = when_on_single_line:silent
 
 [*.proto]
 indent_style = tab
@@ -310,3 +311,26 @@ tab_width = 4
 indent_style = space
 indent_size = 2
 tab_width = 2
+
+# Roslynator
+# Set severity for all analyzers that are enabled by default (https://docs.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers?view=vs-2022#set-rule-severity-of-multiple-analyzer-rules-at-once-in-an-editorconfig-file)
+dotnet_analyzer_diagnostic.category-roslynator.severity = default
+
+# Enable/disable all analyzers by default
+# NOTE: This option can be used only in .roslynatorconfig file
+roslynator_analyzers.enabled_by_default = true
+
+# Set severity for a specific analyzer
+# dotnet_diagnostic.<ANALYZER_ID>.severity = default
+
+# Enable/disable all refactorings
+roslynator_refactorings.enabled = true
+
+# Enable/disable specific refactoring
+# roslynator_refactoring.<REFACTORING_NAME>.enabled = true
+
+# Enable/disable all compiler diagnostic fixes
+roslynator_compiler_diagnostic_fixes.enabled = true
+
+# Enable/disable specific compiler diagnostic fix
+# roslynator_compiler_diagnostic_fix.<COMPILER_DIAGNOSTIC_ID>.enabled = true|false
