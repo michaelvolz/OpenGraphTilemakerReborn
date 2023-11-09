@@ -1,10 +1,74 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using BlazorApp.Client.Pages
+@using Serilog
+@inject IState<CounterRedux.State> CounterState
+@inject IStore Store
+@implements IDisposable
+
+@code {
+
+	void IDisposable.Dispose()
+	{
+		CounterState.StateChanged -= CounterState_StateChanged;
+	}
+
+	private void CounterState_StateChanged(object? sender, EventArgs e)
+	{
+		Log.Information("### NavMenu.CounterState_StateChanged");
+		InvokeAsync(StateHasChanged);
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			Log.Information("### NavMenu.OnAfterRenderAsync");
+			await Store.InitializeAsync();
+
+			CounterState.StateChanged += CounterState_StateChanged;
+		}
+	}
+
+}
+
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+	<div class="container px-4 px-lg-5">
+		<a class="navbar-brand" href="#!">Start Bootstrap</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+						<span class="bi bi-house-door-fill" aria-hidden="true"></span> Home
+					</NavLink>
+					@* <a class="nav-link" href="#!">Home</a> *@
+				</li>
+				<li class="nav-item">
+					<NavLink class="nav-link" href="counter">
+						<span class="bi bi-plus-square-fill" aria-hidden="true"></span> Counter (@CounterState.Value.ClickCount)
+					</NavLink>
+					@* <a class="nav-link" href="#!">About</a> *@
+				</li>
+				<li class="nav-item">
+					<NavLink class="nav-link" href="weather">
+						<span class="bi bi-list-nested" aria-hidden="true"></span> Weather
+					</NavLink>
+					@* <a class="nav-link" href="#!">Services</a> *@
+				</li>
+				@* <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li> *@
+			</ul>
+		</div>
+	</div>
+</nav>
+
+@*
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">BlazorApp</a>
+        <a class="navbar-brand" href="">OGT Reborn</a>
     </div>
 </div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+<input type="checkbox" title="Navigation menu" class="navbar-toggler"/>
 
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
@@ -16,7 +80,7 @@
 
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill" aria-hidden="true"></span> Counter
+				<span class="bi bi-plus-square-fill" aria-hidden="true"></span> Counter (@CounterState.Value.ClickCount)
             </NavLink>
         </div>
 
@@ -27,3 +91,33 @@
         </div>
     </nav>
 </div>
+*@
+@* <div class="top-row ps-3 navbar navbar-dark"> *@
+@*     <div class="container-fluid"> *@
+@*         <a class="navbar-brand" href="">BlazorApp</a> *@
+@*     </div> *@
+@* </div> *@
+@* *@
+@* <input type="checkbox" title="Navigation menu" class="navbar-toggler" /> *@
+@* *@
+@* <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()"> *@
+@*     <nav class="flex-column"> *@
+@*         <div class="nav-item px-3"> *@
+@*             <NavLink class="nav-link" href="" Match="NavLinkMatch.All"> *@
+@*                 <span class="bi bi-house-door-fill" aria-hidden="true"></span> Home *@
+@*             </NavLink> *@
+@*         </div> *@
+@* *@
+@*         <div class="nav-item px-3"> *@
+@*             <NavLink class="nav-link" href="counter"> *@
+@*                 <span class="bi bi-plus-square-fill" aria-hidden="true"></span> Counter *@
+@*             </NavLink> *@
+@*         </div> *@
+@* *@
+@*         <div class="nav-item px-3"> *@
+@*             <NavLink class="nav-link" href="weather"> *@
+@*                 <span class="bi bi-list-nested" aria-hidden="true"></span> Weather *@
+@*             </NavLink> *@
+@*         </div> *@
+@*     </nav> *@
+@* </div> *@

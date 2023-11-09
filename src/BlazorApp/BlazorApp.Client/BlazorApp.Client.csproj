@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -9,7 +9,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fluxor" Version="5.9.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0-rc.2.23480.2" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0-dev-10359" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0" />
+    <!--<PackageReference Include="Serilog.AspNetCore" Version="7.0.1-dev-00320" />-->
+    <!-- <PackageReference Include="Serilog.Settings.Configuration" Version="7.0.2-dev-00546" /> -->
+    <!-- <PackageReference Include="Serilog.Sinks.Console" Version="5.0.0" /> -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Pages\Counter.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="Pages\Weather.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
   </ItemGroup>
 
 </Project>

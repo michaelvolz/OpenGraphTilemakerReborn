@@ -1,6 +1,6 @@
 ﻿using Fluxor;
 using Microsoft.AspNetCore.Components;
-using OpenGraphTilemakerReborn.Store;
+using Common.Store;
 
 namespace OpenGraphTilemakerReborn.Components.Pages
 {
