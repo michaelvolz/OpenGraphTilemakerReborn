@@ -1,11 +1,10 @@
-using System;
-
+// ReSharper disable once CheckNamespace
 namespace MediatR.Examples.ExceptionHandler;
 
-public class ConnectionException : Exception { }
+public class ConnectionException : Exception;
 
-public class ForbiddenException : ConnectionException { }
+public class ForbiddenException : ConnectionException;
 
-public class ResourceNotFoundException : ConnectionException { }
+public class ResourceNotFoundException : ConnectionException;
 
-public class ServerException : Exception { }
+public class ServerException : Exception;

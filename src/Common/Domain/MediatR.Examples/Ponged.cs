@@ -1,6 +1,4 @@
-﻿namespace MediatR.Examples;
+﻿// ReSharper disable once CheckNamespace
+namespace MediatR.Examples;
 
-public class Ponged : INotification
-{
-
-}
+public class Ponged : INotification;

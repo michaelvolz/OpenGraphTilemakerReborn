@@ -1,6 +1,8 @@
+// ReSharper disable once CheckNamespace
+
 namespace MediatR.Examples;
 
 public class Song
 {
-    public string Message { get; set; }
+	public string Message { get; set; }
 }
