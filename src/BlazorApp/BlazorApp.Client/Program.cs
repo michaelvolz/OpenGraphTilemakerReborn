@@ -1,21 +1,13 @@
+using Common.Serilog;
 using Common.Store;
 using Fluxor;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Serilog;
-using Serilog.Core;
-using Serilog.Sinks.SystemConsole.Themes;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-var levelSwitch = new LoggingLevelSwitch();
-Log.Logger = new LoggerConfiguration()
-	.WriteTo.Console(
-		outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}][{SourceContext}] {Message:lj}{NewLine}{Exception}",
-		theme: AnsiConsoleTheme.Code,
-		applyThemeToRedirectedOutput: true
-	)
-	.MinimumLevel.ControlledBy(levelSwitch)
-	.Enrich.WithProperty("InstanceId", Guid.NewGuid().ToString("n"))
+SerilogConfiguration.LoggerConfiguration()
+	.MinimumLevel.Information()
 	.CreateLogger();
 
 builder.Logging.ClearProviders();
@@ -31,9 +23,10 @@ builder.Services.AddFluxor(config => {
 		;
 });
 
-Log.Information("### Starting App");
+Log.Debug("### Starting WebAssembly App");
+Log.Information("### Starting WebAssembly App");
 
-await builder.Build().RunAsync();
+await builder.Build().RunAsync().ConfigureAwait(false);
 
 
 // var builder = WebAssemblyHostBuilder.CreateDefault(args);
