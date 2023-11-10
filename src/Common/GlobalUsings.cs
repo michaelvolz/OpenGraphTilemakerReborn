@@ -1,5 +1,5 @@
 // Global using directives
 
+global using System.Diagnostics.CodeAnalysis;
 global using Fluxor;
 global using JetBrains.Annotations;
-global using System.Diagnostics.CodeAnalysis;
