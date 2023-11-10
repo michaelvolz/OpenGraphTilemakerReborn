@@ -1,15 +1,14 @@
 using MediatR.Pipeline;
 
 // ReSharper disable once CheckNamespace
+// ReSharper disable once IdentifierTypo
 namespace MediatR.Examples;
 
 public class ConstrainedRequestPostProcessor<TRequest, TResponse>
-	: IRequestPostProcessor<TRequest, TResponse>
-	where TRequest : Ping
+	(TextWriter writer) : IRequestPostProcessor<TRequest, TResponse> where TRequest : Ping
 {
-	private readonly TextWriter _writer;
-
-	public ConstrainedRequestPostProcessor(TextWriter writer) => _writer = writer;
-
-	public Task Process(TRequest request, TResponse response, CancellationToken cancellationToken) => _writer.WriteLineAsync("- All Done with Ping");
+	public Task Process(TRequest request, TResponse response, CancellationToken cancellationToken)
+	{
+		return writer.WriteLineAsync("- All Done with Ping");
+	}
 }

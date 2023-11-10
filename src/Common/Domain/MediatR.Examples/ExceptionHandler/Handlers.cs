@@ -1,48 +1,49 @@
 // ReSharper disable once CheckNamespace
+// ReSharper disable once IdentifierTypo
+// ReSharper disable UnusedMember.Global
 
 namespace MediatR.Examples.ExceptionHandler;
 
-public class PingResourceHandler : IRequestHandler<PingResource, Pong>
+#pragma warning disable MA0048 // File name must match type name
+#pragma warning disable CS9113 // Parameter is unread.
+
+public class PingResourceHandler(TextWriter writer) : IRequestHandler<PingResource, Pong>
 {
-	private readonly TextWriter _writer;
-
-	public PingResourceHandler(TextWriter writer) => _writer = writer;
-
-	public Task<Pong> Handle(PingResource request, CancellationToken cancellationToken) => throw new ResourceNotFoundException();
+	public Task<Pong> Handle(PingResource request, CancellationToken cancellationToken)
+	{
+		throw new ResourceNotFoundException();
+	}
 }
 
-public class PingNewResourceHandler : IRequestHandler<PingNewResource, Pong>
+public class PingNewResourceHandler(TextWriter writer) : IRequestHandler<PingNewResource, Pong>
 {
-	private readonly TextWriter _writer;
-
-	public PingNewResourceHandler(TextWriter writer) => _writer = writer;
-
-	public Task<Pong> Handle(PingNewResource request, CancellationToken cancellationToken) => throw new ServerException();
+	public Task<Pong> Handle(PingNewResource request, CancellationToken cancellationToken)
+	{
+		throw new ServerException();
+	}
 }
 
-public class PingResourceTimeoutHandler : IRequestHandler<PingResourceTimeout, Pong>
+public class PingResourceTimeoutHandler(TextWriter writer) : IRequestHandler<PingResourceTimeout, Pong>
 {
-	private readonly TextWriter _writer;
-
-	public PingResourceTimeoutHandler(TextWriter writer) => _writer = writer;
-
-	public Task<Pong> Handle(PingResourceTimeout request, CancellationToken cancellationToken) => throw new TaskCanceledException();
+	public Task<Pong> Handle(PingResourceTimeout request, CancellationToken cancellationToken)
+	{
+		throw new TaskCanceledException();
+	}
 }
 
-public class PingResourceTimeoutOverrideHandler : IRequestHandler<Overrides.PingResourceTimeout, Pong>
+public class PingResourceTimeoutOverrideHandler
+	(TextWriter writer) : IRequestHandler<Overrides.PingResourceTimeout, Pong>
 {
-	private readonly TextWriter _writer;
-
-	public PingResourceTimeoutOverrideHandler(TextWriter writer) => _writer = writer;
-
-	public Task<Pong> Handle(Overrides.PingResourceTimeout request, CancellationToken cancellationToken) => throw new TaskCanceledException();
+	public Task<Pong> Handle(Overrides.PingResourceTimeout request, CancellationToken cancellationToken)
+	{
+		throw new TaskCanceledException();
+	}
 }
 
-public class PingProtectedResourceHandler : IRequestHandler<PingProtectedResource, Pong>
+public class PingProtectedResourceHandler(TextWriter writer) : IRequestHandler<PingProtectedResource, Pong>
 {
-	private readonly TextWriter _writer;
-
-	public PingProtectedResourceHandler(TextWriter writer) => _writer = writer;
-
-	public Task<Pong> Handle(PingProtectedResource request, CancellationToken cancellationToken) => throw new ForbiddenException();
+	public Task<Pong> Handle(PingProtectedResource request, CancellationToken cancellationToken)
+	{
+		throw new ForbiddenException();
+	}
 }

@@ -1,6 +1,9 @@
 ﻿using Common.Store;
+
 using Fluxor;
+
 using Microsoft.AspNetCore.Components;
+
 using Serilog;
 
 namespace BlazorApp.Client.Pages
@@ -25,26 +28,31 @@ namespace BlazorApp.Client.Pages
 		{
 			if (firstRender)
 			{
-				Log.Information("### OnAfterRenderAsync");
-				await Store.InitializeAsync();
+				Log.Debug("### OnAfterRenderAsync");
+				await Store.InitializeAsync().ConfigureAwait(false);
 
 				CounterState.StateChanged += CounterState_StateChanged;
 			}
 		}
 
-		private void CounterState_StateChanged(object? sender, EventArgs e) => InvokeAsync(StateHasChanged);
+		private void CounterState_StateChanged(object? sender, EventArgs e)
+		{
+			_ = InvokeAsync(StateHasChanged);
+		}
 
 		protected override void OnAfterRender(bool firstRender)
 		{
-			if (firstRender) Log.Information("### OnAfterRender");
+			if (firstRender) Log.Debug("### OnAfterRender");
 		}
 
 		private void SendMessageToConsoleNow()
 		{
 			Log.Information("SendMessageToConsoleNow");
-			Dispatcher.Dispatch(new SendMessageRedux.SendMessage($"Hello from Fluxor {CounterState.Value.ClickCount}"));
+			Dispatcher.Dispatch(new SendMessageRedux.SendMessage(FormattableString.Invariant($"Hello from Fluxor {CounterState.Value.ClickCount}")));
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "MA0025:Implement the functionality instead of throwing NotImplementedException",
+			Justification = "Test exception")]
 		private void ThrowException()
 		{
 			throw new NotImplementedException();

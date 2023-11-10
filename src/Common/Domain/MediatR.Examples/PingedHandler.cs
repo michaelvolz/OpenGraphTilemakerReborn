@@ -1,40 +1,38 @@
 // ReSharper disable once CheckNamespace
+// ReSharper disable once IdentifierTypo
 
 namespace MediatR.Examples;
 
-public class PingedHandler : INotificationHandler<Pinged>
+#pragma warning disable MA0048
+public class PingedHandler(TextWriter writer) : INotificationHandler<Pinged>
 {
-	private readonly TextWriter _writer;
-
-	public PingedHandler(TextWriter writer) => _writer = writer;
-
-	public Task Handle(Pinged notification, CancellationToken cancellationToken) => _writer.WriteLineAsync("Got pinged async.");
+	public Task Handle(Pinged notification, CancellationToken cancellationToken)
+	{
+		return writer.WriteLineAsync("Got pinged async.");
+	}
 }
 
-public class PongedHandler : INotificationHandler<Ponged>
+public class PongedHandler(TextWriter writer) : INotificationHandler<Ponged>
 {
-	private readonly TextWriter _writer;
-
-	public PongedHandler(TextWriter writer) => _writer = writer;
-
-	public Task Handle(Ponged notification, CancellationToken cancellationToken) => _writer.WriteLineAsync("Got ponged async.");
+	public Task Handle(Ponged notification, CancellationToken cancellationToken)
+	{
+		return writer.WriteLineAsync("Got ponged async.");
+	}
 }
 
-public class ConstrainedPingedHandler<TNotification> : INotificationHandler<TNotification>
+public class ConstrainedPingedHandler<TNotification>(TextWriter writer) : INotificationHandler<TNotification>
 	where TNotification : Pinged
 {
-	private readonly TextWriter _writer;
-
-	public ConstrainedPingedHandler(TextWriter writer) => _writer = writer;
-
-	public Task Handle(TNotification notification, CancellationToken cancellationToken) => _writer.WriteLineAsync("Got pinged constrained async.");
+	public Task Handle(TNotification notification, CancellationToken cancellationToken)
+	{
+		return writer.WriteLineAsync("Got pinged constrained async.");
+	}
 }
 
-public class PingedAlsoHandler : INotificationHandler<Pinged>
+public class PingedAlsoHandler(TextWriter writer) : INotificationHandler<Pinged>
 {
-	private readonly TextWriter _writer;
-
-	public PingedAlsoHandler(TextWriter writer) => _writer = writer;
-
-	public Task Handle(Pinged notification, CancellationToken cancellationToken) => _writer.WriteLineAsync("Got pinged also async.");
+	public Task Handle(Pinged notification, CancellationToken cancellationToken)
+	{
+		return writer.WriteLineAsync("Got pinged also async.");
+	}
 }

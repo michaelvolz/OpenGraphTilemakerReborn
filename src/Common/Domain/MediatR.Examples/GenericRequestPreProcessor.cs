@@ -3,11 +3,8 @@ using MediatR.Pipeline;
 // ReSharper disable once CheckNamespace
 namespace MediatR.Examples;
 
-public class GenericRequestPreProcessor<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
+public class GenericRequestPreProcessor<TRequest>(TextWriter writer) : IRequestPreProcessor<TRequest>
+	where TRequest : notnull
 {
-	private readonly TextWriter _writer;
-
-	public GenericRequestPreProcessor(TextWriter writer) => _writer = writer;
-
-	public Task Process(TRequest request, CancellationToken cancellationToken) => _writer.WriteLineAsync("- Starting Up");
+	public Task Process(TRequest request, CancellationToken cancellationToken) => writer.WriteLineAsync("- Starting Up");
 }

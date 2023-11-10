@@ -3,12 +3,9 @@ using MediatR.Pipeline;
 // ReSharper disable once CheckNamespace
 namespace MediatR.Examples.ExceptionHandler.Overrides;
 
-public class CommonExceptionHandler : IRequestExceptionHandler<PingResourceTimeout, Pong, Exception>
+#pragma warning disable MA0048 // File name must match type name
+public class CommonExceptionHandler(TextWriter writer) : IRequestExceptionHandler<PingResourceTimeout, Pong, Exception>
 {
-	private readonly TextWriter _writer;
-
-	public CommonExceptionHandler(TextWriter writer) => _writer = writer;
-
 	public async Task Handle(PingResourceTimeout request,
 		Exception exception,
 		RequestExceptionHandlerState<Pong> state,
@@ -16,18 +13,15 @@ public class CommonExceptionHandler : IRequestExceptionHandler<PingResourceTimeo
 	{
 		// Exception type name must be written in messages by LogExceptionAction before
 		// Exception handler type name required because it is checked later in messages
-		await _writer.WriteLineAsync($"---- Exception Handler: '{typeof(CommonExceptionHandler).FullName}'").ConfigureAwait(false);
+		await writer.WriteLineAsync($"---- Exception Handler: '{typeof(CommonExceptionHandler).FullName}'").ConfigureAwait(false);
 
 		state.SetHandled(new Pong());
 	}
 }
 
-public class ServerExceptionHandler : ExceptionHandler.ServerExceptionHandler
+#pragma warning disable CS9107 // Parameter is captured into the state of the enclosing type and its value is also passed to the base constructor. The value might be captured by the base class as well.
+public class ServerExceptionHandler(TextWriter writer) : ExceptionHandler.ServerExceptionHandler(writer)
 {
-	private readonly TextWriter _writer;
-
-	public ServerExceptionHandler(TextWriter writer) : base(writer) => _writer = writer;
-
 	public override async Task Handle(PingNewResource request,
 		ServerException exception,
 		RequestExceptionHandlerState<Pong> state,
@@ -35,7 +29,7 @@ public class ServerExceptionHandler : ExceptionHandler.ServerExceptionHandler
 	{
 		// Exception type name must be written in messages by LogExceptionAction before
 		// Exception handler type name required because it is checked later in messages
-		await _writer.WriteLineAsync($"---- Exception Handler: '{typeof(ServerExceptionHandler).FullName}'").ConfigureAwait(false);
+		await writer.WriteLineAsync($"---- Exception Handler: '{typeof(ServerExceptionHandler).FullName}'").ConfigureAwait(false);
 
 		state.SetHandled(new Pong());
 	}

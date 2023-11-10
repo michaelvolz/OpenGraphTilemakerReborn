@@ -2,11 +2,7 @@
 
 namespace MediatR.Examples;
 
-public class GenericHandler : INotificationHandler<INotification>
+public class GenericHandler(TextWriter writer) : INotificationHandler<INotification>
 {
-	private readonly TextWriter _writer;
-
-	public GenericHandler(TextWriter writer) => _writer = writer;
-
-	public Task Handle(INotification notification, CancellationToken cancellationToken) => _writer.WriteLineAsync("Got notified.");
+	public Task Handle(INotification notification, CancellationToken cancellationToken) => writer.WriteLineAsync("Got notified.");
 }

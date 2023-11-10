@@ -2,15 +2,11 @@
 
 namespace MediatR.Examples;
 
-public class PingHandler : IRequestHandler<Ping, Pong>
+public class PingHandler(TextWriter writer) : IRequestHandler<Ping, Pong>
 {
-	private readonly TextWriter _writer;
-
-	public PingHandler(TextWriter writer) => _writer = writer;
-
 	public async Task<Pong> Handle(Ping request, CancellationToken cancellationToken)
 	{
-		await _writer.WriteLineAsync($"--- Handled Ping: {request.Message}");
+		await writer.WriteLineAsync($"--- Handled Ping: {request.Message}").ConfigureAwait(false);
 		return new Pong { Message = request.Message + " Pong" };
 	}
 }

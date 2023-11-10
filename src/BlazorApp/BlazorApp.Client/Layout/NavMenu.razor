@@ -22,7 +22,7 @@
 		if (firstRender)
 		{
 			Log.Information("### NavMenu.OnAfterRenderAsync");
-			await Store.InitializeAsync();
+			await Store.InitializeAsync().ConfigureAwait(false);
 
 			CounterState.StateChanged += CounterState_StateChanged;
 		}

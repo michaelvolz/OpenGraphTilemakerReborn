@@ -4,6 +4,16 @@ namespace Common.Store;
 
 public class CounterRedux
 {
+	public void Test()
+	{
+		using (var fs = new FileStream("path", FileMode.OpenOrCreate))
+		{
+			using (var sr = new StreamReader(fs))
+			{
+			}
+		}
+	}
+
 	[FeatureState]
 	public record State
 	{
@@ -17,10 +27,11 @@ public class CounterRedux
 	{
 		private static readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
-		[ReducerMethod] [UsedImplicitly]
+		[ReducerMethod]
+		[UsedImplicitly]
 		public static State OnIncrementCounter(State state, IncrementCounter action)
 		{
-			Log.Information($"Old state {state.ClickCount}");
+			Log.Information(FormattableString.Invariant($"Old state {state.ClickCount}"));
 
 			return new State { ClickCount = state.ClickCount + action.Amount };
 		}
