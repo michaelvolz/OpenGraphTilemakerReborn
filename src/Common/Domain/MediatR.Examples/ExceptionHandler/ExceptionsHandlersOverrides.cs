@@ -13,7 +13,8 @@ public class CommonExceptionHandler(TextWriter writer) : IRequestExceptionHandle
 	{
 		// Exception type name must be written in messages by LogExceptionAction before
 		// Exception handler type name required because it is checked later in messages
-		await writer.WriteLineAsync($"---- Exception Handler: '{typeof(CommonExceptionHandler).FullName}'").ConfigureAwait(false);
+		await writer.WriteLineAsync($"---- Exception Handler: '{typeof(CommonExceptionHandler).FullName}'")
+			.ConfigureAwait(false);
 
 		state.SetHandled(new Pong());
 	}
@@ -29,7 +30,8 @@ public class ServerExceptionHandler(TextWriter writer) : ExceptionHandler.Server
 	{
 		// Exception type name must be written in messages by LogExceptionAction before
 		// Exception handler type name required because it is checked later in messages
-		await writer.WriteLineAsync($"---- Exception Handler: '{typeof(ServerExceptionHandler).FullName}'").ConfigureAwait(false);
+		await writer.WriteLineAsync($"---- Exception Handler: '{typeof(ServerExceptionHandler).FullName}'")
+			.ConfigureAwait(false);
 
 		state.SetHandled(new Pong());
 	}

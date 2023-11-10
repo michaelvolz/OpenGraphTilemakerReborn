@@ -1,11 +1,13 @@
 // ReSharper disable once CheckNamespace
+// ReSharper disable once IdentifierTypo
 
 namespace MediatR.Examples;
 
 public class GenericPipelineBehavior<TRequest, TResponse>(TextWriter writer) : IPipelineBehavior<TRequest, TResponse>
 	where TRequest : notnull
 {
-	public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+	public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
+		CancellationToken cancellationToken)
 	{
 		await writer.WriteLineAsync("-- Handling Request").ConfigureAwait(false);
 		var response = await next().ConfigureAwait(false);

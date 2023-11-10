@@ -111,14 +111,14 @@ public static class Runner
 			contents.IndexOf("--- Handled Ping", StringComparison.OrdinalIgnoreCase),
 			contents.IndexOf("-- Finished Request", StringComparison.OrdinalIgnoreCase),
 			contents.IndexOf("- All Done", StringComparison.OrdinalIgnoreCase),
-			contents.IndexOf("- All Done with Ping", StringComparison.OrdinalIgnoreCase),
+			contents.IndexOf("- All Done with Ping", StringComparison.OrdinalIgnoreCase)
 		};
 
 		var streamOrder = new[]
 		{
 			contents.IndexOf("-- Handling StreamRequest", StringComparison.OrdinalIgnoreCase),
 			contents.IndexOf("--- Handled Sing: Sing, Song", StringComparison.OrdinalIgnoreCase),
-			contents.IndexOf("-- Finished StreamRequest", StringComparison.OrdinalIgnoreCase),
+			contents.IndexOf("-- Finished StreamRequest", StringComparison.OrdinalIgnoreCase)
 		};
 
 		var results = new RunResults
@@ -128,12 +128,15 @@ public static class Runner
 			PipelineBehaviors = contents.Contains("-- Handling Request", StringComparison.OrdinalIgnoreCase),
 			RequestPreProcessors = contents.Contains("- Starting Up", StringComparison.OrdinalIgnoreCase),
 			RequestPostProcessors = contents.Contains("- All Done", StringComparison.OrdinalIgnoreCase),
-			ConstrainedGenericBehaviors = contents.Contains("- All Done with Ping", StringComparison.OrdinalIgnoreCase) && !failedJing,
+			ConstrainedGenericBehaviors =
+				contents.Contains("- All Done with Ping", StringComparison.OrdinalIgnoreCase) && !failedJing,
 			OrderedPipelineBehaviors = order.SequenceEqual(order.OrderBy(i => i)),
 			NotificationHandler = contents.Contains("Got pinged async", StringComparison.OrdinalIgnoreCase),
 			MultipleNotificationHandlers =
-				contents.Contains("Got pinged async", StringComparison.OrdinalIgnoreCase) && contents.Contains("Got pinged also async", StringComparison.OrdinalIgnoreCase),
-			ConstrainedGenericNotificationHandler = contents.Contains("Got pinged constrained async", StringComparison.OrdinalIgnoreCase) && !failedPong,
+				contents.Contains("Got pinged async", StringComparison.OrdinalIgnoreCase) &&
+				contents.Contains("Got pinged also async", StringComparison.OrdinalIgnoreCase),
+			ConstrainedGenericNotificationHandler =
+				contents.Contains("Got pinged constrained async", StringComparison.OrdinalIgnoreCase) && !failedPong,
 			CovariantNotificationHandler = contents.Contains("Got notified", StringComparison.OrdinalIgnoreCase),
 			HandlerForSameException = isHandlerForSameExceptionWorks,
 			HandlerForBaseException = isHandlerForBaseExceptionWorks,
@@ -142,9 +145,11 @@ public static class Runner
 			OverriddenHandlerForBaseException = isOverriddenHandlerForBaseExceptionWorks,
 
 			// Streams
-			StreamRequestHandlers = contents.Contains("--- Handled Sing: Sing, Song", StringComparison.OrdinalIgnoreCase) && !failedSing,
-			StreamPipelineBehaviors = contents.Contains("-- Handling StreamRequest", StringComparison.OrdinalIgnoreCase),
-			StreamOrderedPipelineBehaviors = streamOrder.SequenceEqual(streamOrder.OrderBy(i => i)),
+			StreamRequestHandlers =
+				contents.Contains("--- Handled Sing: Sing, Song", StringComparison.OrdinalIgnoreCase) && !failedSing,
+			StreamPipelineBehaviors =
+				contents.Contains("-- Handling StreamRequest", StringComparison.OrdinalIgnoreCase),
+			StreamOrderedPipelineBehaviors = streamOrder.SequenceEqual(streamOrder.OrderBy(i => i))
 		};
 
 		await writer
@@ -335,7 +340,6 @@ public static class Runner
 	private static bool IsExceptionHandledBy<TException, THandler>(WrappingWriter writer)
 		where TException : Exception
 	{
-
 		var messages = writer.Contents.Split(Separator, StringSplitOptions.None).ToList();
 		if (messages.Count - 3 < 0)
 			return false;
@@ -343,7 +347,8 @@ public static class Runner
 		// Note: For this handler type to be found in messages, it must be written in messages by LogExceptionAction
 		return messages[^2].Contains(typeof(THandler).FullName ?? string.Empty, StringComparison.OrdinalIgnoreCase)
 		       // Note: For this exception type to be found in messages, exception must be written in all tested exception handlers
-		       && messages[^3].Contains(typeof(TException).FullName ?? string.Empty, StringComparison.OrdinalIgnoreCase);
+		       && messages[^3].Contains(typeof(TException).FullName ?? string.Empty,
+			       StringComparison.OrdinalIgnoreCase);
 	}
 }
 
