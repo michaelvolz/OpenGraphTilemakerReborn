@@ -8,6 +8,30 @@ dotnet_analyzer_diagnostic.category-design.severity = warning
 # MA0051.maximum_statements_per_method = 40
 dotnet_diagnostic.ma0038.severity = none # default|none|silent|suggestion|warning|error
 
+# Stylecop.Analyzers
+dotnet_diagnostic.sa1200.severity = none
+dotnet_diagnostic.sa1633.severity = none
+dotnet_diagnostic.sa1600.severity = none
+dotnet_diagnostic.sa1127.severity = none
+dotnet_diagnostic.sa1649.severity = none
+dotnet_diagnostic.sa1402.severity = none
+dotnet_diagnostic.sa1117.severity = none
+# dotnet_diagnostic.SA1116.severity = none
+dotnet_diagnostic.SA1503.severity = none
+dotnet_diagnostic.SA1516.severity = none
+dotnet_diagnostic.SA1027.severity = none
+dotnet_diagnostic.SA1309.severity = none
+dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1629.severity = none
+dotnet_diagnostic.SA1133.severity = none
+dotnet_diagnostic.SA1009.severity = none
+dotnet_diagnostic.SA1111.severity = none
+dotnet_diagnostic.SA1601.severity = none
+dotnet_diagnostic.SA1134.severity = none
+dotnet_diagnostic.SA1512.severity = none
+dotnet_diagnostic.SA1005.severity = none
+dotnet_diagnostic.SA1515.severity = none
+
 # Microsoft .NET properties
 csharp_new_line_before_members_in_object_initializers = false
 csharp_preferred_modifier_order = public, private, protected, internal, file, new, static, abstract, virtual, sealed, readonly, override, extern, unsafe, volatile, async, required:suggestion
@@ -29,6 +53,9 @@ dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggest
 # ReSharper properties
 resharper_csharp_max_line_length = 160
 resharper_enforce_line_ending_style = true
+resharper_force_attribute_style = join
+resharper_max_attribute_length_for_same_line = 76
+resharper_trailing_comma_in_multiline_lists = true
 
 # ReSharper inspection severities
 resharper_arrange_redundant_parentheses_highlighting = hint
