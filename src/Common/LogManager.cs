@@ -4,7 +4,7 @@ using Serilog;
 
 namespace Common;
 
-internal class LogManager
+public static class LogManager
 {
 	/// <summary>
 	///     Gets a logger for the current class. Ensure this is set to a static field on the class.
