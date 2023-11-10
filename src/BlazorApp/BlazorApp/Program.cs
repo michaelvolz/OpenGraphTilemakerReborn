@@ -42,7 +42,7 @@ namespace BlazorApp
 		{
 			var config = new LoggerConfiguration()
 				.WriteTo.Console(
-					outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}",
+					outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}][{SourceContext}] {Message:lj}{NewLine}{Exception}",
 					theme: AnsiConsoleTheme.Code,
 					applyThemeToRedirectedOutput: true
 				);
@@ -101,6 +101,7 @@ namespace BlazorApp
 			_builder = WebApplication.CreateBuilder(args);
 			_mediatRWriter = new WrappingWriter(Console.Out);
 			_appServices = Services(_builder, _mediatRWriter);
+			_builder.Logging.ClearProviders();
 			_builder.Host.UseSerilog();
 			_app = _builder.Build();
 
