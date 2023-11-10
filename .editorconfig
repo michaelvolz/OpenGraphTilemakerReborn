@@ -6,16 +6,16 @@ dotnet_analyzer_diagnostic.category-design.severity = warning
 # Meziantou.Analyzer
 # MA0051.maximum_lines_per_method = 60
 # MA0051.maximum_statements_per_method = 40
-dotnet_diagnostic.ma0038.severity = none # default|none|silent|suggestion|warning|error
+dotnet_diagnostic.MA0038.severity = none # default|none|silent|suggestion|warning|error
 
 # Stylecop.Analyzers
-dotnet_diagnostic.sa1200.severity = none
-dotnet_diagnostic.sa1633.severity = none
-dotnet_diagnostic.sa1600.severity = none
-dotnet_diagnostic.sa1127.severity = none
-dotnet_diagnostic.sa1649.severity = none
-dotnet_diagnostic.sa1402.severity = none
-dotnet_diagnostic.sa1117.severity = none
+dotnet_diagnostic.SA1200.severity = none
+dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1127.severity = none
+dotnet_diagnostic.SA1649.severity = none
+dotnet_diagnostic.SA1402.severity = none
+dotnet_diagnostic.SA1117.severity = none
 # dotnet_diagnostic.SA1116.severity = none
 dotnet_diagnostic.SA1503.severity = none
 dotnet_diagnostic.SA1516.severity = none
@@ -31,6 +31,9 @@ dotnet_diagnostic.SA1134.severity = none
 dotnet_diagnostic.SA1512.severity = none
 dotnet_diagnostic.SA1005.severity = none
 dotnet_diagnostic.SA1515.severity = none
+
+# Microsoft Analyzers
+dotnet_diagnostic.CA1032.severity = none
 
 # Microsoft .NET properties
 csharp_new_line_before_members_in_object_initializers = false
