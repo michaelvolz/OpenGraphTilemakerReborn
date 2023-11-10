@@ -23,7 +23,9 @@ namespace Common.Store
         [UsedImplicitly]
         public static class Effects
         {
-            [EffectMethod, UsedImplicitly]
+	        private static readonly ILogger Log = LogManager.GetCurrentClassLogger();
+
+	        [EffectMethod, UsedImplicitly]
             public static Task OnSendMessage(SendMessage sendMessage, IDispatcher dispatcher)
             {
 	            Log.Information(sendMessage.Message);

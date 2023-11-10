@@ -1,27 +1,28 @@
 ﻿using Serilog;
 
-namespace Common.Store
+namespace Common.Store;
+
+public class CounterRedux
 {
-    public class CounterRedux
-    {
-        [FeatureState]
-        public record State
-        {
-            public int ClickCount { get; init; }
-        }
+	[FeatureState]
+	public record State
+	{
+		public int ClickCount { get; init; }
+	}
 
-        public record IncrementCounter(int Amount = 1);
+	public record IncrementCounter(int Amount = 1);
 
-        [UsedImplicitly]
-        public static class Reducers
-        {
-            [ReducerMethod, UsedImplicitly]
-            public static State OnIncrementCounter(State state, IncrementCounter action)
-            {
-	            Log.Information($"Old state {state.ClickCount}");
+	[UsedImplicitly]
+	public static class Reducers
+	{
+		private static readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
-                return new() { ClickCount = state.ClickCount + action.Amount };
-            }
-        }
-    }
+		[ReducerMethod] [UsedImplicitly]
+		public static State OnIncrementCounter(State state, IncrementCounter action)
+		{
+			Log.Information($"Old state {state.ClickCount}");
+
+			return new State { ClickCount = state.ClickCount + action.Amount };
+		}
+	}
 }
