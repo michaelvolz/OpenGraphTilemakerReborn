@@ -1,7 +1,10 @@
 using MediatR.Pipeline;
 
 // ReSharper disable once CheckNamespace
+// ReSharper disable once IdentifierTypo
+#pragma warning disable CA1716
 namespace MediatR.Examples.ExceptionHandler.Overrides;
+#pragma warning restore CA1716
 
 #pragma warning disable MA0048 // File name must match type name
 public class CommonExceptionHandler(TextWriter writer) : IRequestExceptionHandler<PingResourceTimeout, Pong, Exception>

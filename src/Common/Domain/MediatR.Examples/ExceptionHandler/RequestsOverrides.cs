@@ -1,4 +1,3 @@
-#pragma warning disable CA1716
 // ReSharper disable once CheckNamespace
 // ReSharper disable once IdentifierTypo
 
