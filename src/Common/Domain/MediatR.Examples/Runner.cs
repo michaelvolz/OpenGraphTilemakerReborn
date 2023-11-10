@@ -76,7 +76,7 @@ public static class Runner
 						5 => !s.Message.Contains("Singing la", StringComparison.OrdinalIgnoreCase),
 						6 => !s.Message.Contains("Singing ti", StringComparison.OrdinalIgnoreCase),
 						7 => !s.Message.Contains("Singing do", StringComparison.OrdinalIgnoreCase),
-						_ => failedSing
+						_ => failedSing,
 					};
 
 					failedSing = failedSing || ++i > 10;
@@ -346,9 +346,9 @@ public static class Runner
 
 		// Note: For this handler type to be found in messages, it must be written in messages by LogExceptionAction
 		return messages[^2].Contains(typeof(THandler).FullName ?? string.Empty, StringComparison.OrdinalIgnoreCase)
+
 		       // Note: For this exception type to be found in messages, exception must be written in all tested exception handlers
-		       && messages[^3].Contains(typeof(TException).FullName ?? string.Empty,
-			       StringComparison.OrdinalIgnoreCase);
+		       && messages[^3].Contains(typeof(TException).FullName ?? string.Empty, StringComparison.OrdinalIgnoreCase);
 	}
 }
 

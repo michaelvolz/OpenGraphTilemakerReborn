@@ -15,8 +15,7 @@ public class SendMessageRedux
 	[UsedImplicitly]
 	public static class Reducers
 	{
-		[ReducerMethod]
-		[UsedImplicitly]
+		[ReducerMethod, UsedImplicitly]
 #pragma warning disable IDE0060
 		public static State OnSendMessage(State state, SendMessage sendMessage)
 			=> new() { LastMessage = sendMessage.Message };
@@ -27,8 +26,7 @@ public class SendMessageRedux
 	{
 		private static readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
-		[EffectMethod]
-		[UsedImplicitly]
+		[EffectMethod, UsedImplicitly]
 		public static Task OnSendMessage(SendMessage sendMessage, IDispatcher dispatcher)
 		{
 			Log.Information(sendMessage.Message);

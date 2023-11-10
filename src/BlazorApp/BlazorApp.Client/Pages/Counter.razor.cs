@@ -21,13 +21,6 @@ public partial class Counter : IDisposable
 		GC.SuppressFinalize(this);
 	}
 
-	private void IncrementCount1()
-	{
-		Log.Information("IncrementCount1");
-
-		Dispatcher.Dispatch(new CounterRedux.IncrementCounter());
-	}
-
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		if (firstRender)
@@ -39,21 +32,28 @@ public partial class Counter : IDisposable
 		}
 	}
 
-	private void CounterState_StateChanged(object? sender, EventArgs e)
-	{
-		_ = InvokeAsync(StateHasChanged);
-	}
-
 	protected override void OnAfterRender(bool firstRender)
 	{
 		if (firstRender) Log.Debug("### OnAfterRender");
 	}
 
+	private void IncrementCount1()
+	{
+		Log.Information("IncrementCount1");
+
+		Dispatcher.Dispatch(new CounterRedux.IncrementCounter());
+	}
+
+	private void CounterState_StateChanged(object? sender, EventArgs e)
+	{
+		_ = InvokeAsync(StateHasChanged);
+	}
+
 	private void SendMessageToConsoleNow()
 	{
 		Log.Information("SendMessageToConsoleNow");
-		Dispatcher.Dispatch(new SendMessageRedux.SendMessage(string.Create(CultureInfo.InvariantCulture,
-			$"Hello from Fluxor {CounterState.Value.ClickCount}")));
+		Dispatcher.Dispatch(
+			new SendMessageRedux.SendMessage(string.Create(CultureInfo.InvariantCulture, $"Hello from Fluxor {CounterState.Value.ClickCount}")));
 	}
 
 	[SuppressMessage("Design", "MA0025:Implement the functionality instead of throwing NotImplementedException",

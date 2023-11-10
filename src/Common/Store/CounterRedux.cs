@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-
 using Serilog;
 
 namespace Common.Store;
@@ -19,8 +18,7 @@ public class CounterRedux
 	{
 		private static readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
-		[ReducerMethod]
-		[UsedImplicitly]
+		[ReducerMethod, UsedImplicitly]
 		public static State OnIncrementCounter(State state, IncrementCounter action)
 		{
 			Log.Information(string.Create(CultureInfo.InvariantCulture, $"Old state {state.ClickCount}"));

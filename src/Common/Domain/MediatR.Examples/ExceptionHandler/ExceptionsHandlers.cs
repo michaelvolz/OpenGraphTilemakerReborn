@@ -7,10 +7,7 @@ namespace MediatR.Examples.ExceptionHandler;
 #pragma warning disable MA0048 // File name must match type name
 public class CommonExceptionHandler(TextWriter writer) : IRequestExceptionHandler<PingResource, Pong, Exception>
 {
-	public async Task Handle(PingResource request,
-		Exception exception,
-		RequestExceptionHandlerState<Pong> state,
-		CancellationToken cancellationToken)
+	public async Task Handle(PingResource request, Exception exception, RequestExceptionHandlerState<Pong> state, CancellationToken cancellationToken)
 	{
 		// Exception type name must be written in messages by LogExceptionAction before
 		// Exception handler type name required because it is checked later in messages
@@ -24,10 +21,7 @@ public class CommonExceptionHandler(TextWriter writer) : IRequestExceptionHandle
 public class ConnectionExceptionHandler
 	(TextWriter writer) : IRequestExceptionHandler<PingResource, Pong, ConnectionException>
 {
-	public async Task Handle(PingResource request,
-		ConnectionException exception,
-		RequestExceptionHandlerState<Pong> state,
-		CancellationToken cancellationToken)
+	public async Task Handle(PingResource request, ConnectionException exception, RequestExceptionHandlerState<Pong> state, CancellationToken cancellationToken)
 	{
 		// Exception type name must be written in messages by LogExceptionAction before
 		// Exception handler type name required because it is checked later in messages
@@ -41,10 +35,7 @@ public class ConnectionExceptionHandler
 public class AccessDeniedExceptionHandler
 	(TextWriter writer) : IRequestExceptionHandler<PingResource, Pong, ForbiddenException>
 {
-	public async Task Handle(PingResource request,
-		ForbiddenException exception,
-		RequestExceptionHandlerState<Pong> state,
-		CancellationToken cancellationToken)
+	public async Task Handle(PingResource request, ForbiddenException exception, RequestExceptionHandlerState<Pong> state, CancellationToken cancellationToken)
 	{
 		// Exception type name must be written in messages by LogExceptionAction before
 		// Exception handler type name required because it is checked later in messages
@@ -58,9 +49,7 @@ public class AccessDeniedExceptionHandler
 public class ServerExceptionHandler
 	(TextWriter writer) : IRequestExceptionHandler<PingNewResource, Pong, ServerException>
 {
-	public virtual async Task Handle(PingNewResource request,
-		ServerException exception,
-		RequestExceptionHandlerState<Pong> state,
+	public virtual async Task Handle(PingNewResource request, ServerException exception, RequestExceptionHandlerState<Pong> state,
 		CancellationToken cancellationToken)
 	{
 		// Exception type name must be written in messages by LogExceptionAction before
