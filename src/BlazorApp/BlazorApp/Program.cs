@@ -1,14 +1,12 @@
 using BlazorApp.Client.Pages;
 using BlazorApp.Components;
-using Common.Serilog;
 using Common.Store;
 using Fluxor;
 using MediatR;
 using MediatR.Examples;
 using MediatR.Pipeline;
 using Serilog;
-using Serilog.Core;
-using Serilog.Events;
+using static BlazorApp.Client.Logging.SerilogConfiguration;
 
 namespace BlazorApp;
 
@@ -38,61 +36,6 @@ public static class Program
 			await Log.CloseAndFlushAsync().ConfigureAwait(false);
 		}
 	}
-
-	private static Logger CreateLogger()
-	{
-		var loggerConfiguration = SerilogConfiguration.LoggerConfiguration();
-
-		static IConfigurationRoot GetIConfigurationRoot()
-		{
-			var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-			Console.WriteLine($"## Environment = {environmentName}");
-
-			return new ConfigurationBuilder()
-				.SetBasePath(Directory.GetCurrentDirectory())
-#pragma warning disable MA0003
-				.AddJsonFile("appsettings.json", true, true)
-				.AddJsonFile($"appsettings.{environmentName}.json", true, true)
-				.Build();
-		}
-
-		var configuration = GetIConfigurationRoot();
-		var defaultLogLevel = configuration["Logging:LogLevel:Default"];
-		var level = Enum.Parse<LogEventLevel>(defaultLogLevel ?? "Information");
-
-		if (level is LogEventLevel.Verbose or LogEventLevel.Debug or LogEventLevel.Information)
-			Console.WriteLine($"## defaultLogLevel: '{defaultLogLevel}'");
-
-		switch (level)
-		{
-			case LogEventLevel.Verbose:
-				loggerConfiguration.MinimumLevel.Verbose();
-				break;
-			case LogEventLevel.Debug:
-				loggerConfiguration.MinimumLevel.Debug();
-				break;
-			case LogEventLevel.Information:
-				loggerConfiguration.MinimumLevel.Information();
-				break;
-			case LogEventLevel.Warning:
-				loggerConfiguration.MinimumLevel.Warning();
-				break;
-			case LogEventLevel.Error:
-				loggerConfiguration.MinimumLevel.Error();
-				break;
-			case LogEventLevel.Fatal:
-				loggerConfiguration.MinimumLevel.Fatal();
-				break;
-			default:
-#pragma warning disable MA0015
-				throw new ArgumentOutOfRangeException(nameof(level), level, null);
-#pragma warning restore MA0015
-		}
-
-		return loggerConfiguration.CreateLogger();
-	}
-
 #pragma warning disable MA0051
 	private static async Task StartServer(string[] args)
 	{
@@ -105,7 +48,9 @@ public static class Program
 
 		if (!_app.Environment.IsDevelopment())
 		{
+#pragma warning disable MA0003
 			_app.UseExceptionHandler("/Error", true);
+#pragma warning restore MA0003
 			// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 			_app.UseHsts();
 		}
@@ -147,10 +92,7 @@ public static class Program
 
 			serviceCollection.AddSingleton<TextWriter>(wrappingWriter);
 
-			serviceCollection.AddMediatR(cfg =>
-			{
-				cfg.RegisterServicesFromAssemblies(typeof(Ping).Assembly, typeof(Sing).Assembly);
-			});
+			serviceCollection.AddMediatR(cfg => { cfg.RegisterServicesFromAssemblies(typeof(Ping).Assembly, typeof(Sing).Assembly); });
 
 			serviceCollection.AddScoped(typeof(IStreamRequestHandler<Sing, Song>), typeof(SingHandler));
 			serviceCollection.AddScoped(typeof(IPipelineBehavior<,>), typeof(GenericPipelineBehavior<,>));
@@ -176,7 +118,9 @@ public static class Program
 			var provider = services.BuildServiceProvider();
 			var mediator = provider.GetRequiredService<IMediator>();
 
+#pragma warning disable MA0003
 			await Runner.Run(mediator, writer, "ASP.NET Core DI", true).ConfigureAwait(false);
+#pragma warning restore MA0003
 
 			await writer.DisposeAsync().ConfigureAwait(false);
 		}

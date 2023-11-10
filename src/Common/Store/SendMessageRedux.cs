@@ -29,7 +29,6 @@ public class SendMessageRedux
 
 		[EffectMethod]
 		[UsedImplicitly]
-#pragma warning disable IDE0060
 		public static Task OnSendMessage(SendMessage sendMessage, IDispatcher dispatcher)
 		{
 			Log.Information(sendMessage.Message);

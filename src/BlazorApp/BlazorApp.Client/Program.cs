@@ -1,14 +1,17 @@
-using Common.Serilog;
 using Common.Store;
 using Fluxor;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Serilog;
+using static BlazorApp.Client.Logging.SerilogConfiguration;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-SerilogConfiguration.LoggerConfiguration()
-	.MinimumLevel.Information()
-	.CreateLogger();
+Log.Logger = CreateLogger();
+
+// SerilogConfiguration.BaseLoggerConfiguration()
+// 	.MinimumLevel.Information()
+// 	.CreateLogger();
+
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog();
 

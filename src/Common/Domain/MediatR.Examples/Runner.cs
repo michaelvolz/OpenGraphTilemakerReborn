@@ -111,14 +111,14 @@ public static class Runner
 			contents.IndexOf("--- Handled Ping", StringComparison.OrdinalIgnoreCase),
 			contents.IndexOf("-- Finished Request", StringComparison.OrdinalIgnoreCase),
 			contents.IndexOf("- All Done", StringComparison.OrdinalIgnoreCase),
-			contents.IndexOf("- All Done with Ping", StringComparison.OrdinalIgnoreCase)
+			contents.IndexOf("- All Done with Ping", StringComparison.OrdinalIgnoreCase),
 		};
 
 		var streamOrder = new[]
 		{
 			contents.IndexOf("-- Handling StreamRequest", StringComparison.OrdinalIgnoreCase),
 			contents.IndexOf("--- Handled Sing: Sing, Song", StringComparison.OrdinalIgnoreCase),
-			contents.IndexOf("-- Finished StreamRequest", StringComparison.OrdinalIgnoreCase)
+			contents.IndexOf("-- Finished StreamRequest", StringComparison.OrdinalIgnoreCase),
 		};
 
 		var results = new RunResults
@@ -149,7 +149,7 @@ public static class Runner
 				contents.Contains("--- Handled Sing: Sing, Song", StringComparison.OrdinalIgnoreCase) && !failedSing,
 			StreamPipelineBehaviors =
 				contents.Contains("-- Handling StreamRequest", StringComparison.OrdinalIgnoreCase),
-			StreamOrderedPipelineBehaviors = streamOrder.SequenceEqual(streamOrder.OrderBy(i => i))
+			StreamOrderedPipelineBehaviors = streamOrder.SequenceEqual(streamOrder.OrderBy(i => i)),
 		};
 
 		await writer
