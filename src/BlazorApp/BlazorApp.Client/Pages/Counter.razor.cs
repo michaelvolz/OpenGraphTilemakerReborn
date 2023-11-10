@@ -1,4 +1,6 @@
-﻿using Common.Store;
+﻿using System.Globalization;
+
+using Common.Store;
 
 using Fluxor;
 
@@ -15,7 +17,12 @@ namespace BlazorApp.Client.Pages
 		[Inject] public IDispatcher Dispatcher { get; set; } = default!;
 		[Inject] private IStore Store { get; set; } = default!;
 
-		void IDisposable.Dispose() => CounterState.StateChanged -= CounterState_StateChanged;
+		void IDisposable.Dispose()
+		{
+			CounterState.StateChanged -= CounterState_StateChanged;
+
+			GC.SuppressFinalize(this);
+		}
 
 		private void IncrementCount1()
 		{
@@ -48,7 +55,7 @@ namespace BlazorApp.Client.Pages
 		private void SendMessageToConsoleNow()
 		{
 			Log.Information("SendMessageToConsoleNow");
-			Dispatcher.Dispatch(new SendMessageRedux.SendMessage(FormattableString.Invariant($"Hello from Fluxor {CounterState.Value.ClickCount}")));
+			Dispatcher.Dispatch(new SendMessageRedux.SendMessage(string.Create(CultureInfo.InvariantCulture, $"Hello from Fluxor {CounterState.Value.ClickCount}")));
 		}
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "MA0025:Implement the functionality instead of throwing NotImplementedException",

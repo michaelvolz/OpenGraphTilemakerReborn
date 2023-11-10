@@ -51,6 +51,7 @@ public static class Program
 
 			return new ConfigurationBuilder()
 				.SetBasePath(Directory.GetCurrentDirectory())
+#pragma warning disable MA0003
 				.AddJsonFile("appsettings.json", true, true)
 				.AddJsonFile($"appsettings.{environmentName}.json", true, true)
 				.Build();

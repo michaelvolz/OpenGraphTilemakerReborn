@@ -16,8 +16,9 @@ namespace Common.Store
         public static class Reducers
         {
             [ReducerMethod, UsedImplicitly]
+#pragma warning disable IDE0060
             public static State OnSendMessage(State state, SendMessage sendMessage)
-                => new() { LastMessage = sendMessage.Message };
+	            => new() { LastMessage = sendMessage.Message };
         }
 
         [UsedImplicitly]
@@ -26,8 +27,9 @@ namespace Common.Store
 	        private static readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
 	        [EffectMethod, UsedImplicitly]
-            public static Task OnSendMessage(SendMessage sendMessage, IDispatcher dispatcher)
-            {
+#pragma warning disable IDE0060
+	        public static Task OnSendMessage(SendMessage sendMessage, IDispatcher dispatcher)
+	        {
 	            Log.Information(sendMessage.Message);
 
                 return Task.CompletedTask;

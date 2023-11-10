@@ -12,5 +12,6 @@ public static class LogManager
 	/// <returns>An instance of <see cref="T:Serilog.ILogger" /></returns>
 	[MethodImpl(MethodImplOptions.NoInlining)]
 	public static ILogger GetCurrentClassLogger() =>
+#pragma warning disable MA0003
 		Log.ForContext(new StackFrame(1, false).GetMethod()?.DeclaringType ?? throw new InvalidOperationException());
 }
