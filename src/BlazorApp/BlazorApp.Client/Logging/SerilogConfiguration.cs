@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using System.Globalization;
+using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
@@ -13,7 +14,8 @@ public static class SerilogConfiguration
 			.WriteTo.Console(
 				outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}][{SourceContext}] {Message:lj}{NewLine}{Exception}",
 				theme: AnsiConsoleTheme.Code,
-				applyThemeToRedirectedOutput: true
+				applyThemeToRedirectedOutput: true,
+				formatProvider: CultureInfo.InvariantCulture
 			)
 			.Enrich.WithProperty("InstanceId", Guid.NewGuid().ToString("n"));
 	}
