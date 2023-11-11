@@ -12,7 +12,7 @@ public static class Runner
 	private static readonly string[] Separator = { "\r\n", "\r", "\n" };
 
 #pragma warning disable MA0051
-	public static async Task Run(IMediator mediator, WrappingWriter writer, string projectName,
+	public static async Task RunAsync(IMediator mediator, WrappingWriter writer, string projectName,
 		bool testStreams = false)
 	{
 		await writer.WriteLineAsync("===============").ConfigureAwait(false);
@@ -92,15 +92,15 @@ public static class Runner
 		}
 
 		var isHandlerForSameExceptionWorks =
-			await IsHandlerForSameExceptionWorks(mediator, writer).ConfigureAwait(false);
+			await IsHandlerForSameExceptionWorksAsync(mediator, writer).ConfigureAwait(false);
 		var isHandlerForBaseExceptionWorks =
-			await IsHandlerForBaseExceptionWorks(mediator, writer).ConfigureAwait(false);
+			await IsHandlerForBaseExceptionWorksAsync(mediator, writer).ConfigureAwait(false);
 		var isHandlerForLessSpecificExceptionWorks =
-			await IsHandlerForLessSpecificExceptionWorks(mediator, writer).ConfigureAwait(false);
+			await IsHandlerForLessSpecificExceptionWorksAsync(mediator, writer).ConfigureAwait(false);
 		var isPreferredHandlerForBaseExceptionWorks =
-			await IsPreferredHandlerForBaseExceptionWorks(mediator, writer).ConfigureAwait(false);
+			await IsPreferredHandlerForBaseExceptionWorksAsync(mediator, writer).ConfigureAwait(false);
 		var isOverriddenHandlerForBaseExceptionWorks =
-			await IsOverriddenHandlerForBaseExceptionWorks(mediator, writer).ConfigureAwait(false);
+			await IsOverriddenHandlerForBaseExceptionWorksAsync(mediator, writer).ConfigureAwait(false);
 
 		await writer.WriteLineAsync("---------------").ConfigureAwait(false);
 		var contents = writer.Contents;
@@ -231,7 +231,7 @@ public static class Runner
 		await writer.WriteLineAsync().ConfigureAwait(false);
 	}
 
-	private static async Task<bool> IsHandlerForSameExceptionWorks(IMediator mediator, WrappingWriter writer)
+	private static async Task<bool> IsHandlerForSameExceptionWorksAsync(IMediator mediator, WrappingWriter writer)
 	{
 		var isHandledCorrectly = false;
 
@@ -252,7 +252,7 @@ public static class Runner
 		return isHandledCorrectly;
 	}
 
-	private static async Task<bool> IsHandlerForBaseExceptionWorks(IMediator mediator, WrappingWriter writer)
+	private static async Task<bool> IsHandlerForBaseExceptionWorksAsync(IMediator mediator, WrappingWriter writer)
 	{
 		var isHandledCorrectly = false;
 
@@ -272,7 +272,7 @@ public static class Runner
 		return isHandledCorrectly;
 	}
 
-	private static async Task<bool> IsHandlerForLessSpecificExceptionWorks(IMediator mediator, WrappingWriter writer)
+	private static async Task<bool> IsHandlerForLessSpecificExceptionWorksAsync(IMediator mediator, WrappingWriter writer)
 	{
 		var isHandledCorrectly = false;
 
@@ -292,7 +292,7 @@ public static class Runner
 		return isHandledCorrectly;
 	}
 
-	private static async Task<bool> IsPreferredHandlerForBaseExceptionWorks(IMediator mediator, WrappingWriter writer)
+	private static async Task<bool> IsPreferredHandlerForBaseExceptionWorksAsync(IMediator mediator, WrappingWriter writer)
 	{
 		var isHandledCorrectly = false;
 
@@ -315,7 +315,7 @@ public static class Runner
 		return isHandledCorrectly;
 	}
 
-	private static async Task<bool> IsOverriddenHandlerForBaseExceptionWorks(IMediator mediator, WrappingWriter writer)
+	private static async Task<bool> IsOverriddenHandlerForBaseExceptionWorksAsync(IMediator mediator, WrappingWriter writer)
 	{
 		var isHandledCorrectly = false;
 

@@ -25,7 +25,7 @@ public static class Program
 		{
 			Log.Information("Starting web application");
 
-			await StartServer(args).ConfigureAwait(false);
+			await StartServerAsync(args).ConfigureAwait(false);
 		}
 		catch (Exception ex)
 		{
@@ -37,7 +37,7 @@ public static class Program
 		}
 	}
 #pragma warning disable MA0051
-	private static async Task StartServer(string[] args)
+	private static async Task StartServerAsync(string[] args)
 	{
 		_builder = WebApplication.CreateBuilder(args);
 		_mediatorWriter = new WrappingWriter(Console.Out);
@@ -119,7 +119,7 @@ public static class Program
 			var mediator = provider.GetRequiredService<IMediator>();
 
 #pragma warning disable MA0003
-			await Runner.Run(mediator, writer, "ASP.NET Core DI", true).ConfigureAwait(false);
+			await Runner.RunAsync(mediator, writer, "ASP.NET Core DI", true).ConfigureAwait(false);
 #pragma warning restore MA0003
 
 			await writer.DisposeAsync().ConfigureAwait(false);

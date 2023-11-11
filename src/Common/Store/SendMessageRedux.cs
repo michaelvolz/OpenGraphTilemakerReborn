@@ -27,7 +27,7 @@ public class SendMessageRedux
 		private static readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
 		[EffectMethod, UsedImplicitly]
-		public static Task OnSendMessage(SendMessage sendMessage, IDispatcher dispatcher)
+		public static Task OnSendMessageAsync(SendMessage sendMessage, IDispatcher dispatcher)
 		{
 			Log.Information(sendMessage.Message);
 
