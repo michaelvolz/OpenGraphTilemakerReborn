@@ -28,7 +28,7 @@ public static class SerilogConfiguration
 
 		return new ConfigurationBuilder()
 			.SetBasePath(Path.Combine(pathPrefix, Directory.GetCurrentDirectory()))
-#pragma warning disable MA0003 - no access for fix
+#pragma warning disable MA0003 // no access for fix
 			.AddJsonFile("appsettings.json", true, true)
 			.AddJsonFile($"appsettings.{environmentName}.json", true, true)
 			.Build();
