@@ -32,7 +32,7 @@ dotnet_diagnostic.SA1512.severity = none
 dotnet_diagnostic.SA1005.severity = none
 dotnet_diagnostic.SA1515.severity = none
 
-# Microsoft Analyzers
+# Microsoft.CodeAnalysis.NetAnalyzers
 dotnet_diagnostic.CA1032.severity = none
 
 # Microsoft .NET properties
