@@ -92,7 +92,7 @@ public static class Program
 
 			serviceCollection.AddSingleton<TextWriter>(wrappingWriter);
 
-			serviceCollection.AddMediatR(cfg => { cfg.RegisterServicesFromAssemblies(typeof(Ping).Assembly, typeof(Sing).Assembly); });
+			serviceCollection.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Ping).Assembly, typeof(Sing).Assembly));
 
 			serviceCollection.AddScoped(typeof(IStreamRequestHandler<Sing, Song>), typeof(SingHandler));
 			serviceCollection.AddScoped(typeof(IPipelineBehavior<,>), typeof(GenericPipelineBehavior<,>));

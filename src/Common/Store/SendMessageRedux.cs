@@ -2,7 +2,7 @@
 
 namespace Common.Store;
 
-public class SendMessageRedux
+public static class SendMessageRedux
 {
 	[FeatureState]
 	public record State
@@ -16,8 +16,9 @@ public class SendMessageRedux
 	public static class Reducers
 	{
 		[ReducerMethod, UsedImplicitly]
-#pragma warning disable IDE0060
+#pragma warning disable RCS1163, IDE0060
 		public static State OnSendMessage(State state, SendMessage sendMessage)
+#pragma warning restore IDE0060, RCS1163
 			=> new() { LastMessage = sendMessage.Message };
 	}
 
@@ -27,7 +28,9 @@ public class SendMessageRedux
 		private static readonly ILogger Log = LogManager.GetCurrentClassLogger();
 
 		[EffectMethod, UsedImplicitly]
+#pragma warning disable RCS1163, IDE0060
 		public static Task OnSendMessageAsync(SendMessage sendMessage, IDispatcher dispatcher)
+#pragma warning restore IDE0060, RCS1163
 		{
 			Log.Information(sendMessage.Message);
 

@@ -66,13 +66,9 @@ public static class SerilogConfiguration
 				loggerConfiguration.MinimumLevel.Fatal();
 				break;
 			default:
-#pragma warning disable MA0015
-#pragma warning disable MA0003
-#pragma warning disable CA2208
+#pragma warning disable MA0015, MA0003, CA2208
 				throw new ArgumentOutOfRangeException(nameof(level), level, null);
-#pragma warning restore CA2208
-#pragma warning restore MA0003
-#pragma warning restore MA0015
+#pragma warning restore CA2208, MA0003, MA0015
 		}
 
 		return loggerConfiguration.CreateLogger();

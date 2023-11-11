@@ -3,7 +3,7 @@ using Serilog;
 
 namespace Common.Store;
 
-public class CounterRedux
+public static class CounterRedux
 {
 	[FeatureState]
 	public record State
