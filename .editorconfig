@@ -1,12 +1,39 @@
 [*.cs]
 
+# Set severity for all analyzers that are enabled by default (https://docs.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers?view=vs-2022#set-rule-severity-of-multiple-analyzer-rules-at-once-in-an-editorconfig-file)
+dotnet_analyzer_diagnostic.category-roslynator.severity = default       # default|none|silent|suggestion|warning|error
+
+# Enable/disable all analyzers by default
+# NOTE: This option can be used only in .roslynatorconfig file
+roslynator_analyzers.enabled_by_default = true      # true|false
+
+# Set severity for a specific analyzer
+# dotnet_diagnostic.<ANALYZER_ID>.severity = default|none|silent|suggestion|warning|error
+dotnet_diagnostic.ROS0003.severity = suggestion     # default|none|silent|suggestion|warning|error
+dotnet_diagnostic.RCS1205.severity = none
+
+# Enable/disable all refactorings
+roslynator_refactorings.enabled = true      # true|false
+
+# Enable/disable specific refactoring
+# roslynator_refactoring.<REFACTORING_NAME>.enabled = true|false
+
+# Enable/disable all compiler diagnostic fixes
+roslynator_compiler_diagnostic_fixes.enabled = true     # true|false
+
+# Enable/disable specific compiler diagnostic fix
+# roslynator_compiler_diagnostic_fix.<COMPILER_DIAGNOSTIC_ID>.enabled = true|false
+
+
 # Default severity for analyzer diagnostics with category 'Design'
 dotnet_analyzer_diagnostic.category-design.severity = warning
+
 
 # Meziantou.Analyzer
 # MA0051.maximum_lines_per_method = 60
 # MA0051.maximum_statements_per_method = 40
 dotnet_diagnostic.MA0038.severity = none # default|none|silent|suggestion|warning|error
+
 
 # Stylecop.Analyzers
 dotnet_diagnostic.SA0001.severity = none
@@ -33,8 +60,10 @@ dotnet_diagnostic.SA1512.severity = none
 dotnet_diagnostic.SA1005.severity = none
 dotnet_diagnostic.SA1515.severity = none
 
+
 # Microsoft.CodeAnalysis.NetAnalyzers
 dotnet_diagnostic.CA1032.severity = none
+
 
 # Microsoft .NET properties
 csharp_new_line_before_members_in_object_initializers = false
