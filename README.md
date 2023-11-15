@@ -10,7 +10,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/michaelvolz/OpenGraphTilemakerReborn)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/michaelvolz/OpenGraphTilemakerReborn)
 
-## Experimental [DotNet 8][def] [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor)
+## Experimental DotNet 8 [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor)
 
 This project uses both Blazor Server- & WebAssembly-Interactive.
 
