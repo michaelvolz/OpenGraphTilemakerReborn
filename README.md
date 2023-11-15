@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/dotnet.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/dotnet.yml)
 [![SonarCloud](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/sonarcloud.yml)
 [![CodeQL](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/codeql.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/codeql.yml)
-[![last commit (master)](https://github.com/last-commit/michaelvolz/OpenGraphTilemakerReborn/develop.svg?label=last%20commit%20%28master%29)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/commits/master)
+[![last commit (master)]([https://github.com](https://img.shields.io)/last-commit/michaelvolz/OpenGraphTilemakerReborn/master)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/commits/master)
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://en.wikipedia.org/wiki/Unlicense)
 [![Dependabot enabled](https://img.shields.io/badge/Dependabot-enabled-blue.svg)](https://docs.github.com/en/code-security/dependabot/working-with-dependabot)
 
