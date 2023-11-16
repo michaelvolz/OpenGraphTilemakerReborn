@@ -3,10 +3,14 @@
 [![Build Status](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/dotnet.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/dotnet.yml)
 [![SonarCloud](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/sonarcloud.yml)
 [![CodeQL](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/codeql.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/codeql.yml)
+[![last commit (master)](https://img.shields.io/github/last-commit/michaelvolz/OpenGraphTilemakerReborn/master.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/commits/master)
+
 [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://en.wikipedia.org/wiki/Unlicense)
 [![Dependabot enabled](https://img.shields.io/badge/Dependabot-enabled-blue.svg)](https://docs.github.com/en/code-security/dependabot/working-with-dependabot)
+![GitHub language count](https://img.shields.io/github/languages/count/michaelvolz/OpenGraphTilemakerReborn)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/michaelvolz/OpenGraphTilemakerReborn)
 
-## Experimental [DotNet 8][def] [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor)
+## Experimental DotNet 8 [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor)
 
 This project uses both Blazor Server- & WebAssembly-Interactive.
 
