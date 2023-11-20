@@ -28,7 +28,7 @@ Trying to evaluate the performance impact of using so many analyzers at the same
 ### Frontend technologies
 
 - [SCSS](https://sass-lang.com/documentation/syntax/) (or Less)
-- [Bootstrap](https://getbootstrap.com/) (or PureCSS/ZURB Foundation/Bulma/Fomantic-UI)
+- [Bootstrap](https://getbootstrap.com/) (or Bulma/Fomantic-UI/ZURB Foundation)
 - [WebCompiler](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.WebCompiler) (or Dart SCSS)
 - [LibMan](https://learn.microsoft.com/en-us/aspnet/core/client-side/libman/libman-vs?view=aspnetcore-8.0) (or VS Package Installer)
 - As little JavaScript as possible
