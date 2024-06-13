@@ -1,7 +1,6 @@
 # OpenGraph Tilemaker Reborn
 
 [![Build Status](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/dotnet.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/dotnet.yml)
-[![SonarCloud](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/sonarcloud.yml)
 [![CodeQL](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/codeql.yml/badge.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/actions/workflows/codeql.yml)
 [![last commit (master)](https://img.shields.io/github/last-commit/michaelvolz/OpenGraphTilemakerReborn/master.svg)](https://github.com/michaelvolz/OpenGraphTilemakerReborn/commits/master)
 
