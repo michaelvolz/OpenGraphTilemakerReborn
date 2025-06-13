@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Fluxor.Blazor.Web" Version="6.6.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.17" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.2" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
   </ItemGroup>
