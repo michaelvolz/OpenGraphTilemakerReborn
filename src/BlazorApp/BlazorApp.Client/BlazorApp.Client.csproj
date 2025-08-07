@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Sdk.WebAssembly.Pack" Version="9.0.8" />
     <Content Update="Pages\Counter.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
